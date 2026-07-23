@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= mangaTitle %> - <%= chapter %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col items-center">
+    <!-- Top Navigation Bar -->
+    <div class="w-full bg-slate-900/90 backdrop-blur fixed top-0 left-0 p-4 border-b border-slate-800 flex justify-between items-center z-50">
+        <a href="/" class="text-rose-500 hover:underline font-medium text-sm">&larr; Back to Library</a>
+        <h1 class="text-sm md:text-base font-semibold truncate px-2"><%= mangaTitle %> - <%= chapter.replace('_', ' ') %></h1>
+        <div class="w-20"></div> <!-- Spacer for layout balance -->
+    </div>
+
+    <!-- Manga Pages Container (Stacked Vertically for Webtoon/Manga style reading) -->
+    <div class="mt-20 flex flex-col items-center w-full max-w-3xl space-y-0">
+        <% pages.forEach(page => { %>
+            <img src="/uploads/<%= mangaTitle.replace(/ /g, '_') %>/<%= chapter %>/<%= page %>" alt="Page" class="w-full h-auto block select-none">
+        <% }) %>
+    </div>
+
+    <!-- Bottom Footer Navigation -->
+    <div class="py-10 text-slate-500 text-sm">
+        You've reached the end of the chapter!
+    </div>
+</body>
+</html>

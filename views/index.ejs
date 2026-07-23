@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manga Reader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="server.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-6">
+    <div class="max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-extrabold tracking-wide text-rose-500">📖 My Manga Library</h1>
+            <a href="/upload" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-lg font-medium transition">Upload Manga</a>
+        </div>
+
+        <% if (mangaList.length === 0) { %>
+            <p class="text-slate-400 text-center py-12">No manga uploaded yet. Click upload to get started!</p>
+        <% } else { %>
+            <div class="grid gap-6">
+                <% mangaList.forEach(manga => { %>
+                    <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-md">
+                        <h2 class="text-xl font-bold mb-3 text-slate-200"><%= manga.title %></h2>
+                        <div class="flex flex-wrap gap-2">
+                            <% manga.chapters.forEach(chap => { %>
+                                <a href="/read/<%= manga.folderName %>/<%= chap %>" class="bg-slate-700 hover:bg-rose-600 hover:text-white px-3 py-1.5 rounded-md text-sm font-medium transition">
+                                    <%= chap.replace('_', ' ') %>
+                                </a>
+                            <% }) %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

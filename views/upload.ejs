@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Manga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-6">
+    <div class="max-w-xl mx-auto bg-slate-800 p-8 rounded-xl border border-slate-700 shadow-lg">
+        <h1 class="text-2xl font-bold mb-6 text-rose-500">Upload New Chapter</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-1">Manga Title</label>
+                <input type="text" name="mangaTitle" required placeholder="e.g. Solo Leveling" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-rose-500">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Chapter Number</label>
+                <input type="number" name="chapterNumber" required placeholder="e.g. 1" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-rose-500">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Select Manga Pages (Select multiple images)</label>
+                <input type="file" name="mangaPages" multiple accept="image/*" required class="w-full text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-rose-600 file:text-white hover:file:bg-rose-700 cursor-pointer">
+            </div>
+            <div class="flex justify-between items-center pt-4">
+                <a href="/" class="text-slate-400 hover:underline text-sm">Cancel</a>
+                <button type="submit" class="bg-rose-600 hover:bg-rose-700 text-white px-6 py-2.5 rounded-lg font-medium transition">Upload Chapter</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
